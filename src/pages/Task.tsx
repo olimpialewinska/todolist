@@ -1,8 +1,11 @@
+import { useParams } from "react-router-dom";
+import { Task } from "../components/pages/Task";
 export default function TaskPage() {
-  return (
-    <div>
-      <h1>Taks</h1>
-      <p>This is the task page.</p>
-    </div>
-  );
+  const { id } = useParams();
+
+  if (!id) {
+    return <div>Invalid ID</div>;
+  }
+
+  return <Task id={id} />;
 }
