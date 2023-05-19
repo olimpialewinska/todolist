@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Container } from "./style";
+import { Container, Header } from "./style";
 import { useNavigate } from "react-router-dom";
 
 export function NoPage() {
@@ -25,7 +25,8 @@ export function NoPage() {
 
   return (
     <Container>
-      <h1>404 - Page not found.</h1>
+      <Header>404</Header>
+      <h1>PAGE NOT FOUND</h1>
       <p>Redirecting to home in {counter} seconds.</p>
     </Container>
   );
