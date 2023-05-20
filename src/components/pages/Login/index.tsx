@@ -36,7 +36,12 @@ export function Login() {
       alert(json);
       return;
     }
+    const userData = {
+      id: json.id,
+      email: json.email,
+    };
     Cookies.set("token", json.token, { expires: 7, path: "" });
+    Cookies.set("id", JSON.stringify(userData), { expires: 7, path: "" });
     navigate("/home", { replace: true });
 
     console.log(json.token);

@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
   border-width: 1px;
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 90%;
   }
 `;
 

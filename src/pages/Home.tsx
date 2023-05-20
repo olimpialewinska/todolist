@@ -6,6 +6,7 @@ import { useEffect } from "react";
 export default function HomePage() {
   const navigate = useNavigate();
   const token = Cookies.get("token");
+  const userId = Cookies.get("id");
   console.log(token);
 
   useEffect(() => {
@@ -14,5 +15,10 @@ export default function HomePage() {
     }
   }, [navigate, token]);
 
-  return <Home />;
+  const id = JSON.parse(userId!).id;
+  const email = JSON.parse(userId!).email;
+
+  const user = { id, email };
+
+  return <Home user={user} token={token} />;
 }
