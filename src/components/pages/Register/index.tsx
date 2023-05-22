@@ -17,7 +17,6 @@ export function Register() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const handleSubmit = useCallback(async () => {
-    console.log(`${url}api/Auth/register`);
     const data = await fetch(`${url}api/Auth/register`, {
       method: "POST",
       credentials: "same-origin",

@@ -21,7 +21,8 @@ export const Button = styled.div`
   background-repeat: no-repeat;
   opacity: 0.8;
   cursor: pointer;
-  filter: invert(1);
+  filter: invert(95%) sepia(77%) saturate(2929%) hue-rotate(300deg)
+    brightness(105%) contrast(94%);
 
   &:hover {
     opacity: 1;

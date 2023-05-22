@@ -12,7 +12,7 @@ import {
 } from "./style";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import { ITask, url } from "../../../constants";
+import { ITask, LogOut, url } from "../../../constants";
 import { TaskItem } from "./TaskItem";
 
 interface Icontext {
@@ -40,9 +40,7 @@ export function Home(props: HomeProps) {
 
   const navigate = useNavigate();
   const logOut = useCallback(() => {
-    Cookies.remove("token");
-    Cookies.remove("id");
-
+    LogOut();
     navigate("/", { replace: true });
   }, [navigate]);
 
@@ -63,6 +61,8 @@ export function Home(props: HomeProps) {
 
       const json = await data.json();
       if (data.status !== 200) {
+        LogOut();
+        navigate("/", { replace: true });
         return;
       }
 

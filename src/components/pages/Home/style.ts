@@ -17,6 +17,10 @@ export const Navbar = styled.div`
   height: 80px;
   padding: 0 20px;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    margin-top: 20px;
+  }
 `;
 
 export const Content = styled.div`
@@ -30,6 +34,7 @@ export const Content = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
+    height: auto;
   }
 `;
 
@@ -122,7 +127,7 @@ export const LogOutBtn = styled.div`
   }
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 100px;
   }
 `;
 
@@ -131,4 +136,14 @@ export const Email = styled.div`
   font-size: 24px;
   margin: 0;
   font-weight: 700;
+`;
+
+export const Name = styled.div`
+  color: #28d7fe;
+  font-size: 16px;
+  font-weight: 700;
+
+  &:hover {
+    color: #fff;
+  }
 `;

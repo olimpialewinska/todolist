@@ -7,7 +7,6 @@ export default function HomePage() {
   const navigate = useNavigate();
   const token = Cookies.get("token");
   const userId = Cookies.get("id");
-  console.log(token);
 
   useEffect(() => {
     if (!token) {

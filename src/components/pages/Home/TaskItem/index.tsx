@@ -2,12 +2,14 @@ import { useCallback, useContext } from "react";
 import { ITask, url } from "../../../../constants";
 import { Button, Item, Name, Wrapper } from "./style";
 import { userContext } from "..";
+import { useNavigate } from "react-router-dom";
 
 interface TaskItemProps {
   task: ITask;
 }
 
 export function TaskItem(props: TaskItemProps) {
+  const navigate = useNavigate();
   const { user, token, getTask } = useContext(userContext);
   const handleDelete = useCallback(async () => {
     if (!token || !token) {
@@ -48,7 +50,13 @@ export function TaskItem(props: TaskItemProps) {
 
   return (
     <Item>
-      <Name>{props.task.description}</Name>
+      <Name
+        onClick={() => {
+          navigate(`/task/${props.task.id}`);
+        }}
+      >
+        {props.task.description}
+      </Name>
       {props.task.isCompleted ? (
         <Button
           onClick={() => handleDelete()}
