@@ -24,6 +24,11 @@ export function TaskItem(props: TaskItemProps) {
       },
     });
 
+    if (data.status !== 201) {
+      alert("Error");
+      return;
+    }
+
     getTask("completed");
     getTask("incomplete");
   }, [getTask, props.task.id, token, user]);
@@ -43,6 +48,11 @@ export function TaskItem(props: TaskItemProps) {
         },
       }
     );
+
+    if (data.status !== 201) {
+      alert("Error");
+      return;
+    }
 
     getTask("incomplete");
     getTask("completed");

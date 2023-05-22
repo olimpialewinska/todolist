@@ -103,3 +103,8 @@ export const Text = styled.div`
   font-size: 16px;
   margin-top: 8px;
 `;
+
+export const Message = styled.div`
+  text-align: center;
+  text-justify: inter-word;
+`;

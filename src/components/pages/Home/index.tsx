@@ -10,7 +10,6 @@ import {
   LogOutBtn,
   Email,
 } from "./style";
-import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { ITask, LogOut, url } from "../../../constants";
 import { TaskItem } from "./TaskItem";

@@ -8,6 +8,7 @@ import {
   Link,
   Footer,
   Text,
+  Message,
 } from "./style";
 
 import { useNavigate } from "react-router-dom";
@@ -18,7 +19,23 @@ export function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [message, setMessage] = useState("Enter your login details");
+
+  const emailValidation = useCallback(() => {
+    const regex = /\S+@\S+\.\S+/;
+    if (!regex.test(email)) {
+      setMessage("Invalid email");
+      return false;
+    }
+    setMessage("Enter your registration details");
+    return true;
+  }, [email]);
+
   const handleSubmit = useCallback(async () => {
+    if (!emailValidation()) {
+      return;
+    }
     const data = await fetch(`${url}api/Auth/login`, {
       method: "POST",
       credentials: "same-origin",
@@ -43,20 +60,30 @@ export function Login() {
     Cookies.set("token", json.token, { expires: 7, path: "" });
     Cookies.set("id", JSON.stringify(userData), { expires: 7, path: "" });
     navigate("/home", { replace: true });
-
-    console.log(json.token);
-  }, [email, navigate, password]);
+  }, [email, emailValidation, navigate, password]);
 
   return (
     <Container>
       <Wrapper>
         <Header>Login</Header>
+        <Message
+          style={
+            message === "Enter your login details"
+              ? { color: "#28d7fe" }
+              : { color: "red" }
+          }
+        >
+          {message}
+        </Message>
         <Input
           type="text"
           placeholder="Email"
           style={{ marginTop: 40 }}
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            emailValidation();
+          }}
         />
         <Input
           type="password"
