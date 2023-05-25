@@ -13,6 +13,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { ITask, LogOut, url } from "../../../constants";
 import { TaskItem } from "./TaskItem";
+import { log } from "console";
 
 interface Icontext {
   user: {
@@ -58,12 +59,12 @@ export function Home(props: HomeProps) {
         },
       });
 
-      const json = await data.json();
       if (data.status !== 200) {
-        LogOut();
-        navigate("/", { replace: true });
+        logOut();
         return;
       }
+      const json = await data.json();
+      console.log(data.status);
 
       if (type === "completed") {
         setCompleted(json);
@@ -71,7 +72,7 @@ export function Home(props: HomeProps) {
       }
       setTasks(json);
     },
-    [navigate, props.token, props.user.id]
+    [logOut, navigate, props.token, props.user.id]
   );
 
   const handleCreate = useCallback(async () => {

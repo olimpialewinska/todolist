@@ -3,6 +3,7 @@ import { ITask, url } from "../../../../constants";
 import { Button, Item, Name, Wrapper } from "./style";
 import { userContext } from "..";
 import { useNavigate } from "react-router-dom";
+import { log } from "console";
 
 interface TaskItemProps {
   task: ITask;
@@ -24,7 +25,9 @@ export function TaskItem(props: TaskItemProps) {
       },
     });
 
-    if (data.status !== 201) {
+    console.log(data.status);
+
+    if (data.status !== 204) {
       alert("Error");
       return;
     }
@@ -49,7 +52,9 @@ export function TaskItem(props: TaskItemProps) {
       }
     );
 
-    if (data.status !== 201) {
+    console.log(data.status);
+
+    if (data.status !== 204) {
       alert("Error");
       return;
     }
